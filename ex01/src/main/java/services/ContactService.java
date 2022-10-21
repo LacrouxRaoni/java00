@@ -24,7 +24,7 @@ public class ContactService {
         String nickName = sc.nextLine();
         if (isEmpty(nickName))
             return ;
-        System.out.print("Phone Number: (Numbers only)");
+        System.out.print("Phone Number(Numbers only): ");
         String phoneNumber = sc.nextLine();
         if (!isNumber(phoneNumber)){
             return ;

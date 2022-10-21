@@ -1,6 +1,5 @@
 package services;
 
-
 import entities.ContactEntity;
 import entities.PhoneBookEntity;
 
@@ -8,14 +7,14 @@ import java.util.List;
 
 public class PhoneBookService {
 
-    PhoneBookEntity phoneBook = new PhoneBookEntity();
+    private static PhoneBookEntity phoneBook;
 
-    public void showList(){
-        List<ContactEntity> list = phoneBook.getPhoneBook();
-        for(ContactEntity c : list){
-            System.out.println(c.getIndex());
-            System.out.println(c.getFirstName());
-        }
+    public PhoneBookService() {
+    }
+
+    public static void showList(){
+        String list = phoneBook.getContacts().get(0).getFirstName();
+        System.out.println(list);
     }
 
 }

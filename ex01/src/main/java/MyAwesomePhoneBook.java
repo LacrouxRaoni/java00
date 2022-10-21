@@ -1,3 +1,4 @@
+import entities.PhoneBookEntity;
 import services.ContactService;
 import services.PhoneBookService;
 
@@ -23,8 +24,7 @@ public class MyAwesomePhoneBook {
         if (option == 1){
             ContactService.addContact();
         } else{
-            PhoneBookService phoneBookService = new PhoneBookService();
-            phoneBookService.showList();
+            PhoneBookEntity.show();
         }
     }
 
