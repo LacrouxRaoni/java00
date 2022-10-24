@@ -12,9 +12,5 @@ public class PhoneBookService {
     public PhoneBookService() {
     }
 
-    public static void showList(){
-        String list = phoneBook.getContacts().get(0).getFirstName();
-        System.out.println(list);
-    }
 
 }

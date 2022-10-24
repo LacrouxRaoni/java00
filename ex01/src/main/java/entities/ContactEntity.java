@@ -18,7 +18,6 @@ public class ContactEntity {
         this.darkestSecret = darkestSecret;
     }
 
-
     public String getFirstName() {
         return firstName;
     }

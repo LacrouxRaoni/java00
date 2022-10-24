@@ -8,7 +8,7 @@ public class MyAwesomePhoneBook {
     public static void main(String[] args) {
         int option;
 
-         System.out.println("WELCOME TO MY AWESOME PHONE BOOK!");
+        System.out.println("WELCOME TO MY AWESOME PHONE BOOK!");
         while (true){
             displayMenu();
             option = getValue();

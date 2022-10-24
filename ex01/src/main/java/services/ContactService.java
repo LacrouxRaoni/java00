@@ -35,7 +35,7 @@ public class ContactService {
             return ;
         }
         ContactEntity contactEntity = new ContactEntity(name, lastName, nickName, phoneNumber, secret);
-        phoneBook.saveContact(contactEntity);
+        PhoneBookEntity.saveContact(contactEntity);
     }
     private static boolean isNumber(String phoneNumber) {
         if (phoneNumber.matches("\\d+"))
