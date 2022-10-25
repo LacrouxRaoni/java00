@@ -36,24 +36,31 @@ public class PhoneBookEntity {
 
     private static void toString(ContactEntity c, int index) {
 
-        String name = String.valueOf(columSize(c.getFirstName()));
-        System.out.print("         " + (index + 1) + "|");
-        System.out.print(name + "|");
-        System.out.print(Arrays.toString(new String[]{columSize(c.getLastName())}) + "|");
-        System.out.print(Arrays.toString(new String[]{columSize(c.getNickname())}) + "|");
+        System.out.println("         " +
+                        (index + 1) +
+                "|" +
+                columCustomize(c.getFirstName()) +
+                "|" +
+                columCustomize(c.getLastName()) +
+                "|" +
+                columCustomize(c.getNickname())
+                );
     }
 
-    private static String columSize(String word) {
+    private static String columCustomize(String word) {
         int size;
-        StringBuilder line = null;
 
-        size = 10 - word.length();
-
-        for (int i = 0; i < size; i++){
-            line.append(' ');
+        StringBuilder line = new StringBuilder();
+        if (word.length() >= 10){
+            line.append(word, 0, 9);
+            line.append('.');
+        } else {
+            size = 10 - word.length();
+            for (int i = 0; i < size; i++){
+                line.append(' ');
+            }
+            line.append(word);
         }
-        System.out.println(line);
-        line.append(word);
         return line.toString();
     }
 }
