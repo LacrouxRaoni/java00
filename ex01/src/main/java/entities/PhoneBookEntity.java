@@ -1,36 +1,49 @@
 package entities;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import services.PhoneBookService;
+
 import java.util.Scanner;
 
 public class PhoneBookEntity {
 
-    private final static List<ContactEntity> contacts = new ArrayList<>();
-
+    private final static ContactEntity[] contacts = new ContactEntity[8];
+    private static int index = 0;
     public PhoneBookEntity() {
     }
 
-
-    public List<ContactEntity> getContacts() {
-        return contacts;
-    }
     public static void saveContact(ContactEntity contactEntity) {
-        if (contacts.size() == 7){
-            contacts.add(7, contactEntity);
-        } else if (contacts.size() < 7)
-            contacts.add(contactEntity);
+        if (index == 2){
+            index = 0;
+        }
+        contacts[index] = contactEntity;
+        index += 1;
     }
 
     public static void show() {
+        if (index < 1){
+            System.out.println("There is no contact in list.");
+            return ;
+        }
+        PhoneBookService.printHeaderTable();
+        for (int i = 0; i < index; i++){
+            toString(contacts[i], i);
+        }
         Scanner sc = new Scanner(System.in);
-        System.out.print("Contact name: ");
-        String name = sc.nextLine();
-        for (ContactEntity c : contacts){
-            if (c.getFirstName().contains(name)){
-                toString(c, contacts.indexOf(c));
-            }
+        System.out.print("Choose contact by index: ");
+        int indexS = sc.nextInt();
+        if ( index < indexS || indexS < 1) {
+            System.out.println("Invalid index.");
+        } else {
+            System.out.print("First Name: ");
+            System.out.println(contacts[indexS - 1].getFirstName());
+            System.out.print("Last Name: ");
+            System.out.println(contacts[indexS - 1].getLastName());
+            System.out.print("Nickname: ");
+            System.out.println(contacts[indexS - 1].getNickname());
+            System.out.print("Phone Number: ");
+            System.out.println(contacts[indexS - 1].getPhoneNumber());
+            System.out.print("Darkest Secret: ");
+            System.out.println(contacts[indexS - 1].getDarkestSecret());
         }
     }
 
@@ -43,11 +56,11 @@ public class PhoneBookEntity {
                 "|" +
                 columCustomize(c.getLastName()) +
                 "|" +
-                columCustomize(c.getNickname())
+                columCustomize(c.getNickname()) + "|"
                 );
     }
 
-    private static String columCustomize(String word) {
+    public static String columCustomize(String word) {
         int size;
 
         StringBuilder line = new StringBuilder();
@@ -56,9 +69,7 @@ public class PhoneBookEntity {
             line.append('.');
         } else {
             size = 10 - word.length();
-            for (int i = 0; i < size; i++){
-                line.append(' ');
-            }
+            line.append(" ".repeat(size));
             line.append(word);
         }
         return line.toString();

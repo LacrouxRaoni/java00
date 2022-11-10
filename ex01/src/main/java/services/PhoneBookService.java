@@ -12,5 +12,10 @@ public class PhoneBookService {
     public PhoneBookService() {
     }
 
-
+    public static void printHeaderTable() {
+        System.out.print(PhoneBookEntity.columCustomize("Index") + "|");
+        System.out.print(PhoneBookEntity.columCustomize("Name") + "|");
+        System.out.print(PhoneBookEntity.columCustomize("Last Name") + "|");
+        System.out.print(PhoneBookEntity.columCustomize("Nickname") + "|\n");
+    }
 }
