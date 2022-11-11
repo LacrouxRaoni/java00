@@ -71,8 +71,6 @@ public class Account {
         _accountIndex++;
     }
 
-
-
     public void displayStatus()
     {
         _displayTimestamp();
